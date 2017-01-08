@@ -1,0 +1,33 @@
+{
+  "name": "homebridge-yr",
+  "version": "1.0.0",
+  "description": "A homebridge temperature sensor for displaying the weather at your current location using data from yr.no.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hpbieker/homebridge-yr.git"
+  },
+  "engines": {
+    "homebridge": ">=0.2.0",
+    "node": ">=4.2.0"
+  },
+  "keywords": [
+    "homebridge-plugin",
+    "weather",
+    "yr",
+    "yr.no"
+  ],
+  "author": "Hans Petter Bieker <hans.petter.bieker@gmail.com>",
+  "license": "",
+  "bugs": {
+    "url": "https://github.com/hpbieker/homebridge-yr/issues"
+  },
+  "homepage": "https://github.com/hpbieker/homebridge-yr#readme",
+  "dependencies": {
+    "request": "^2.65.0",
+    "xml2json": ">=0.10.0"
+  }
+}
