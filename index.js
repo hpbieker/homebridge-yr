@@ -29,7 +29,7 @@ WeatherAccessory.prototype =
                         this.log("HTTP get weather function failed: %s", error.message);
                         callback(error);
                     } else {
-                        //this.log("HTTP Response", responseBody);
+                        this.log("HTTP Response", responseBody);
                         var weatherJson = require('xml2json').toJson(responseBody);
                         var weatherObj = JSON.parse(weatherJson);
                         var temperature = parseFloat(weatherObj.weatherdata.forecast.tabular.time[0].temperature.value);
