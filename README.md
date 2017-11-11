@@ -4,8 +4,8 @@ A homebridge temperature sensor for displaying the weather at your current locat
 
 # Installation
 
-1. Install Homebridge using: `npm install -g homebridge`
-2. Install this plugin using: `npm install -g homebridge-yr`
+1. Install Homebridge using: `npm install -g --unsafe-perm homebridge`
+2. Install this plugin using: `npm install -g --unsafe-perm homebridge-yr`
 3. Update your Homebridge `config.json` using the sample below.
 
 # Configuration
