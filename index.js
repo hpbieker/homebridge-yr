@@ -23,15 +23,14 @@ WeatherAccessory.prototype =
         getState: function (callback) {
             // Only fetch new data once per hour
             if (this.lastupdate + (60 * 60) < (Date.now() / 1000 | 0)) {
-                var url = "https://api.met.no/weatherapi/locationforecast/2.0/compact?"+this.location;
+                var url = 'https://api.met.no/weatherapi/locationforecast/2.0/compact?'+this.location;
                 this.httpRequest(url, function (error, response, responseBody) {
                     if (error) {
                         this.log("HTTP get weather function failed: %s", error.message);
                         callback(error);
                     } else {
-                        this.log("HTTP Response", responseBody);
-                        var weatherObj = JSON.parse(weatherJson);
-                        var temperature = parseFloat(weatherObj.timeseries[0].data.instant.details.air_temperature);
+                        var weatherObj = JSON.parse(responseBody);
+                        var temperature = parseFloat(weatherObj.properties.timeseries[2].data.instant.details.air_temperature);
                         this.log("temperature: ", temperature);
                         this.temperature = temperature;
                         this.lastupdate = (Date.now() / 1000);
@@ -54,7 +53,7 @@ WeatherAccessory.prototype =
             var informationService = new Service.AccessoryInformation();
 
             informationService
-                .setCharacteristic(Characteristic.Manufacturer, "Yr.no")
+                .setCharacteristic(Characteristic.Manufacturer, "Linus Nyrén")
                 .setCharacteristic(Characteristic.Model, "Location")
                 .setCharacteristic(Characteristic.SerialNumber, "");
 
@@ -78,6 +77,9 @@ WeatherAccessory.prototype =
             request({
                     url: url,
                     body: "",
+                    headers: {
+                        'User-Agent': 'PostmanRuntime/7.26.10'
+                    },
                     method: "GET",
                     rejectUnauthorized: false
                 },
