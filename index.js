@@ -23,16 +23,15 @@ WeatherAccessory.prototype =
         getState: function (callback) {
             // Only fetch new data once per hour
             if (this.lastupdate + (60 * 60) < (Date.now() / 1000 | 0)) {
-                var url = "http://www.yr.no/sted/" + this.location + "/varsel.xml";
+                var url = "https://api.met.no/weatherapi/locationforecast/2.0/compact?"+this.location;
                 this.httpRequest(url, function (error, response, responseBody) {
                     if (error) {
                         this.log("HTTP get weather function failed: %s", error.message);
                         callback(error);
                     } else {
                         this.log("HTTP Response", responseBody);
-                        var weatherJson = require('xml2json').toJson(responseBody);
                         var weatherObj = JSON.parse(weatherJson);
-                        var temperature = parseFloat(weatherObj.weatherdata.forecast.tabular.time[0].temperature.value);
+                        var temperature = parseFloat(weatherObj.timeseries[0].data.instant.details.air_temperature);
                         this.log("temperature: ", temperature);
                         this.temperature = temperature;
                         this.lastupdate = (Date.now() / 1000);

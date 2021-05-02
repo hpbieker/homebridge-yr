@@ -13,7 +13,7 @@ A homebridge temperature sensor for displaying the weather at your current locat
 ```json
 {
   "accessory": "Yr",
-  "location": "Norge/Oslo/Oslo/Oslo",
+  "location": "lat=57.68333&lon=11.93333&altitude=36",
   "name": "Yr"
 }
 ```
@@ -21,6 +21,6 @@ A homebridge temperature sensor for displaying the weather at your current locat
 Fields:
 
 * `accessory` must be "Yr" (required).
-* `location` location query string (resembles to <a href="http://www.yr.no/sted/Norge/Oslo/Oslo/Oslo/varsel.xml">location</a>) (required).
+* `location` location query string (resembles to <a href="https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=57.68333&lon=11.93333&altitude=36">location</a>) (required).
 * `name` is the name of the published accessory (required).
 
